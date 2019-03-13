@@ -6,18 +6,19 @@ output: github_document
 
 ```{r out.width = '80%', echo = FALSE, fig.align = 'center'}
 # To inset an image
-getwd() # to check where I am
-setwd("hw-stat133/workout1/images")  # to make sure the path is right
-knitr::include_graphics("hw-stat133/workout1/images/gsw-shot-charts.png")
+knitr::include_graphics("../images/gsw-shot-charts.png")
 ```
 
-5.1) Effective Shooting Percentage
+#### 5.1) Effective Shooting Percentage
 ```{r}
-shots = shots_data.csv
-shots$name = as.character(shots$name) # to make sure it can be grouped by
-typeof(shots$name) # character
+library(dplyr)
 
-# 2PT Effective Shooting % by Player
+shots = read.csv("../data/shots_data.csv")
+shots$name = as.character(shots$name) # to make sure it can be grouped by
+```
+
+**2PT Effective Shooting % by Player**
+```{r}
 table_2pt = arrange(summarise(group_by(shots, name),
                   total = sum(shot_type == "2PT Field Goal"),
                   made = sum(shot_type == "2PT Field Goal" & shot_made_flag == "shot_yes"),
@@ -25,8 +26,9 @@ table_2pt = arrange(summarise(group_by(shots, name),
 table_2pt
 ```
 
+
+**3PT Effective Shooting % by Player**
 ```{r}
-# 3PT Effective Shooting % by Player
 table_3pt = arrange(summarise(group_by(shots, name),
                   total = sum(shot_type == "3PT Field Goal"),
                   made = sum(shot_type == "3PT Field Goal" & shot_made_flag == "shot_yes"),
@@ -34,8 +36,9 @@ table_3pt = arrange(summarise(group_by(shots, name),
 table_3pt
 ```
 
+
+**Effective Shooting % by Player**
 ```{r}
-# Effective Shooting % by Player
 table_overall = arrange(summarise(group_by(shots, name),
                   total = sum(shot_made_flag == "shot_yes" | shot_made_flag == "shot_no"),
                   made = sum(shot_made_flag == "shot_yes"),
