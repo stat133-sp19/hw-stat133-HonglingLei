@@ -31,7 +31,7 @@ klay_shot_chart = ggplot(data = thompson)+
   theme_minimal()
 klay_shot_chart
 
-# save the graph as a pdf in the /images file
+# save the graphs as a pdf in the /images file
 pdf("../images/klay-thompson-shot-chart.pdf", width = 6.5, height = 5)
 ggplot(data = thompson)+
   annotation_custom(court_image, -250, 250, -50, 420)+
@@ -41,8 +41,67 @@ ggplot(data = thompson)+
   theme_minimal()
 dev.off()
 
+pdf("../images/andre-iguodala-shot-chart.pdf", width = 6.5, height = 5)
+ggplot(data = iguodala)+
+  annotation_custom(court_image, -250, 250, -50, 420)+
+  geom_point(aes(x = x, y = y, color = shot_made_flag))+
+  ylim(-50,420)+
+  ggtitle("Shot Chart: Andre Iguodala (2016 season)")+
+  theme_minimal()
+dev.off()
+
+pdf("../images/draymond-green-shot-chart.pdf", width = 6.5, height = 5)
+ggplot(data = green)+
+  annotation_custom(court_image, -250, 250, -50, 420)+
+  geom_point(aes(x = x, y = y, color = shot_made_flag))+
+  ylim(-50,420)+
+  ggtitle("Shot Chart: Draymond Green (2016 season)")+
+  theme_minimal()
+dev.off()  
+
+pdf("../images/kevin-durant-shot-chart.pdf", width = 6.5, height = 5)
+ggplot(data = durant)+
+  annotation_custom(court_image, -250, 250, -50, 420)+
+  geom_point(aes(x = x, y = y, color = shot_made_flag))+
+  ylim(-50,420)+
+  ggtitle("Shot Chart: Kevin Durant (2016 season)")+
+  theme_minimal()
+dev.off()  
+
+pdf("../images/stephen-curry-shot-chart.pdf", width = 6.5, height = 5)
+ggplot(data = curry)+
+  annotation_custom(court_image, -250, 250, -50, 420)+
+  geom_point(aes(x = x, y = y, color = shot_made_flag))+
+  ylim(-50,420)+
+  ggtitle("Shot Chart: Stephen Curry (2016 season)")+
+  theme_minimal()
+dev.off()  
   
+# Create one graph, using facetting, to show all the shot charts in one image
+shots_data.csv = read.csv("shots_data.csv")
+
+# save this file in PDF format
+pdf("../images/gsw-shot-charts.pdf", width = 8, height = 7)
+ggplot(data = shots_data.csv)+
+  annotation_custom(court_image, -250, 250, -50, 420)+
+  geom_point(aes(x = x, y = y, color = shot_made_flag))+
+  ylim(-50,420)+
+  facet_wrap(~name)+
+  ggtitle("Shot Charts: GSW (2016 season)")+
+  theme(legend.position="top")+
+  theme(legend.title = element_blank())
+dev.off()
   
-  
-  
-  
+# save this file in PNG format
+png("../images/gsw-shot-charts.png", width = 8, height = 7)
+ggplot(data = shots_data.csv)+
+  annotation_custom(court_image, -250, 250, -50, 420)+
+  geom_point(aes(x = x, y = y, color = shot_made_flag))+
+  ylim(-50,420)+
+  facet_wrap(~name)+
+  ggtitle("Shot Charts: GSW (2016 season)")+
+  theme(legend.position="top")+
+  theme(legend.title = element_blank())
+dev.off()
+
+
