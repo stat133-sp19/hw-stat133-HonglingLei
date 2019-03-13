@@ -87,7 +87,9 @@ Analysis
 
 Below is a graph of each player's performance.
 
-<img src="../images/gsw-shot-charts.png" width="80%" style="display: block; margin: auto;" /> As the legend explains, green dots represent successful shots made while red ones are not successful. The background represents the NBA court, and the positions of the dots show from where the player threw the basketball.
+<img src="../images/gsw-shot-charts.png" width="80%" style="display: block; margin: auto;" />
+
+As the legend explains, green dots represent successful shots made while red ones are not successful. The background represents the NBA court, and the positions of the dots show from where the player threw the basketball.
 
 We can see that Andre and Draymond threw relatively small numbers of shots compared to Kevin, Klay and Stephen. This somewhat matches their positions in the team. Also Kevin, Klay and Stephen seem to be good at giving shots from anywhere, while Andre and Draymond are not as impressive when it comes to long-distance shots.
 
