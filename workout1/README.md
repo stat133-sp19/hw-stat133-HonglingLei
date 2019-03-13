@@ -7,7 +7,7 @@ In the data preparation stage, I downloaded data, cleaned data by manipulating t
 
 In the core analysis stage, I wrote codes to make statistical summaries of different players' performances, plotted graphs to display their shots and changed the formats of the graphs to enable them to be shown in the final report.
 
-In the reporting stage, I wrote an .Rmd file to display the analyzing process and results to readers. My final report includes the following parts - introduction, motivation, background, data, analysis, key takeway and references.
+In the reporting stage, I wrote an .Rmd file to display the analyzing process and results to readers. My final report includes the following parts - introduction, motivation, background, data, analysis, discussion, conclusion and references.
 
 
 ## Folder Description
