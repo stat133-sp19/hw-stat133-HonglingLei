@@ -1,28 +1,45 @@
 ---
-title: "workout-hongling-lei"
+title: "workout 1"
+author: Hongling Lei
 output: github_document
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+```{r out.width = '80%', echo = FALSE, fig.align = 'center'}
+# To inset an image
+getwd() # to check where I am
+setwd("hw-stat133/workout1/images")  # to make sure the path is right
+knitr::include_graphics("hw-stat133/workout1/images/gsw-shot-charts.png")
 ```
 
-## R Markdown
+5.1) Effective Shooting Percentage
+```{r}
+shots = shots_data.csv
+shots$name = as.character(shots$name) # to make sure it can be grouped by
+typeof(shots$name) # character
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
+# 2PT Effective Shooting % by Player
+table_2pt = arrange(summarise(group_by(shots, name),
+                  total = sum(shot_type == "2PT Field Goal"),
+                  made = sum(shot_type == "2PT Field Goal" & shot_made_flag == "shot_yes"),
+                  perc_made = made/total), desc(perc_made))
+table_2pt
 ```
 
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
+```{r}
+# 3PT Effective Shooting % by Player
+table_3pt = arrange(summarise(group_by(shots, name),
+                  total = sum(shot_type == "3PT Field Goal"),
+                  made = sum(shot_type == "3PT Field Goal" & shot_made_flag == "shot_yes"),
+                  perc_made = made/total), desc(perc_made))
+table_3pt
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+```{r}
+# Effective Shooting % by Player
+table_overall = arrange(summarise(group_by(shots, name),
+                  total = sum(shot_made_flag == "shot_yes" | shot_made_flag == "shot_no"),
+                  made = sum(shot_made_flag == "shot_yes"),
+                  perc_made = made/total), desc(perc_made))
+table_overall
+```
+
