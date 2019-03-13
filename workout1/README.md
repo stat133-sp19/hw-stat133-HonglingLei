@@ -1,10 +1,40 @@
 README
 ================
 
-The purpose of this assignment is threefold: 
+## Workout Description
+This workout is mainly about the data analysis cycle of nba GSW data. 
+In the data preparation stage, I downloaded data, cleaned data by manipulating them, merged files for further analysis.
 
-1) From the logistical point of view, I will start working with a more complex file structure, and uploading files to GitHub. 
+In the core analysis stage, I wrote codes to make statistical summaries of different players' performances, plotted graphs to display their shots and changed the formats of the graphs to enable them to be shown in the final report.
 
-2) From the analytics point of view, this HW involves visualizing shot data of NBA players. More especifically, I will be producing so-called “shot charts” for a handful of players from the Golden State Warriors, as well as other summaries and visualizations. 
+In the reporting stage, I wrote an .Rmd file to display the analyzing process and results to readers. My final report includes the following parts - introduction, motivation, background, data, analysis, key takeway and references.
 
-3) From the report/communication standpoint, I will be producing a report document that is not just a boring list of code-and-output without a narrative.
+
+## Folder Description
+
+### /data
+
+This is the folder where all the raw data are stored, including a data dictionary, each player's performance and a combined dataset "shots_data.csv" which contains all five players' data.
+
+### /code
+
+Folder "code" contains the R scripts of preparing data and making plots. 
+
+The file "make-shot-data-script.R" is to prepare data for further analysis and graphing, by adding some columns, merging separate tables, export summaries, etc.
+
+The file "make-shot-charts-script.R" is to plot shots and export those graphs to the /images folder.
+
+### /images
+
+This is the folder where all the plotted graphs, and other downloaded pictures are stored. "gsw-shot-charts.pdf" and "gsw-shot-charts.png" contain the plots of shots for all the players.
+
+### /output
+
+This is the folder where all the statistical summaries are stored, including player-specific ones and the combined one.
+
+### /report
+
+This file contains the final report, in both .Rmd and .md format.
+
+
+

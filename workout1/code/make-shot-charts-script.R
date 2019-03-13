@@ -93,7 +93,7 @@ ggplot(data = shots_data.csv)+
 dev.off()
   
 # save this file in PNG format
-png("../images/gsw-shot-charts.png", width = 8, height = 7, units = "in") # THE DEFAULT SIZE IS IN PX RATHER THAN INCH!!!
+png("../images/gsw-shot-charts.png", width = 8, height = 7, units = "in", res = 200) # THE DEFAULT SIZE IS IN PX RATHER THAN INCH!!!
 ggplot(data = shots_data.csv)+
   annotation_custom(court_image, -250, 250, -50, 420)+
   geom_point(aes(x = x, y = y, color = shot_made_flag))+
@@ -104,4 +104,48 @@ ggplot(data = shots_data.csv)+
   theme(legend.title = element_blank())
 dev.off()
 
+# I also saved all the individual plottings as .PNG, as I'll use them in the report
+png("../images/klay-thompson-shot-chart.png", width = 8, height = 7, units = "in", res = 200)
+ggplot(data = thompson)+
+  annotation_custom(court_image, -250, 250, -50, 420)+
+  geom_point(aes(x = x, y = y, color = shot_made_flag))+
+  ylim(-50,420)+
+  ggtitle("Shot Chart: Klay Thompson (2016 season)")+
+  theme_minimal()
+dev.off()
 
+png("../images/andre-iguodala-shot-chart.png", width = 8, height = 7, units = "in", res = 200)
+ggplot(data = thompson)+
+  annotation_custom(court_image, -250, 250, -50, 420)+
+  geom_point(aes(x = x, y = y, color = shot_made_flag))+
+  ylim(-50,420)+
+  ggtitle("Shot Chart: Andre-Iguodala (2016 season)")+
+  theme_minimal()
+dev.off()
+
+png("../images/draymond-green-shot-chart.png", width = 8, height = 7, units = "in", res = 200)
+ggplot(data = green)+
+  annotation_custom(court_image, -250, 250, -50, 420)+
+  geom_point(aes(x = x, y = y, color = shot_made_flag))+
+  ylim(-50,420)+
+  ggtitle("Shot Chart: Draymond Green (2016 season)")+
+  theme_minimal()
+dev.off() 
+
+png("../images/keven-durant-shot-chart.png", width = 8, height = 7, units = "in", res = 200)
+ggplot(data = green)+
+  annotation_custom(court_image, -250, 250, -50, 420)+
+  geom_point(aes(x = x, y = y, color = shot_made_flag))+
+  ylim(-50,420)+
+  ggtitle("Shot Chart: Kevin Durant (2016 season)")+
+  theme_minimal()
+dev.off() 
+
+png("../images/stephen-curry-shot-chart.png", width = 8, height = 7, units = "in", res = 200)
+ggplot(data = green)+
+  annotation_custom(court_image, -250, 250, -50, 420)+
+  geom_point(aes(x = x, y = y, color = shot_made_flag))+
+  ylim(-50,420)+
+  ggtitle("Shot Chart: Stephen Curry (2016 season)")+
+  theme_minimal()
+dev.off() 
