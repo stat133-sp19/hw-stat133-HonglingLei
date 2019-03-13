@@ -1,8 +1,8 @@
 
 # title: shot-charts
-# description: plotting of chots
-# inputs:
-# outputs:
+# description: plotting of shots
+# inputs: nba-court.jpg, five previous .csv files, the combined .csv file
+# outputs: plotting of shots, separately and combined, in PDF and PNG formats
 
 library(ggplot2)
 library(jpeg)
@@ -93,7 +93,7 @@ ggplot(data = shots_data.csv)+
 dev.off()
   
 # save this file in PNG format
-png("../images/gsw-shot-charts.png", width = 8, height = 7)
+png("../images/gsw-shot-charts.png", width = 8, height = 7, units = "in") # THE DEFAULT SIZE IS IN PX RATHER THAN INCH!!!
 ggplot(data = shots_data.csv)+
   annotation_custom(court_image, -250, 250, -50, 420)+
   geom_point(aes(x = x, y = y, color = shot_made_flag))+
