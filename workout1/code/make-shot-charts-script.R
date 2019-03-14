@@ -8,6 +8,13 @@ library(ggplot2)
 library(jpeg)
 library(grid)
 
+iguodala <- read.csv("../data/andre-iguodala.csv", stringsAsFactors = FALSE)
+green <- read.csv("../data/draymond-green.csv", stringsAsFactors = FALSE)
+durant <- read.csv("../data/kevin-durant.csv", stringsAsFactors = FALSE)
+thompson <- read.csv("../data/klay-thompson.csv", stringsAsFactors = FALSE)
+curry <- read.csv("../data/stephen-curry.csv", stringsAsFactors = FALSE)
+
+
 thompson_scatterplot = ggplot(data = thompson)+
   geom_point(aes(x = x, y = y, color = shot_made_flag))
 thompson_scatterplot
@@ -78,7 +85,7 @@ ggplot(data = curry)+
 dev.off()  
   
 # Create one graph, using facetting, to show all the shot charts in one image
-shots_data.csv = read.csv("shots_data.csv")
+shots_data.csv = read.csv("../data/shots_data.csv")
 
 # save this file in PDF format
 pdf("../images/gsw-shot-charts.pdf", width = 8, height = 7)
