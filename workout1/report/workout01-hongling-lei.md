@@ -126,17 +126,16 @@ table_2pt = arrange(summarise(group_by(shots, name),
                   total = sum(shot_type == "2PT Field Goal"),
                   made = sum(shot_type == "2PT Field Goal" & shot_made_flag == "shot_yes"),
                   perc_made = made/total), desc(perc_made))
-table_2pt
+knitr::kable(table_2pt, caption = "2PT Effective Shooting Percentage by Player")
 ```
 
-    ## # A tibble: 5 x 4
-    ##   name           total  made perc_made
-    ##   <chr>          <int> <int>     <dbl>
-    ## 1 Andre Iguodala   210   134     0.638
-    ## 2 Kevin Durant     643   390     0.607
-    ## 3 Stephen Curry    563   304     0.540
-    ## 4 Klay Thompson    640   329     0.514
-    ## 5 Draymond Green   346   171     0.494
+| name           |  total|  made|  perc\_made|
+|:---------------|------:|-----:|-----------:|
+| Andre Iguodala |    210|   134|   0.6380952|
+| Kevin Durant   |    643|   390|   0.6065319|
+| Stephen Curry  |    563|   304|   0.5399645|
+| Klay Thompson  |    640|   329|   0.5140625|
+| Draymond Green |    346|   171|   0.4942197|
 
 As for 2-point shots, Andre Iguodala did the best job. Although he had the smallest number of shots made (134) among the five players, he had the highest percentage of 2-point shots made (63.8%). Draymond Green was worst at giving 2-point shots if measured by the probability of a successful shot (49.4%).
 
@@ -147,17 +146,16 @@ table_3pt = arrange(summarise(group_by(shots, name),
                   total = sum(shot_type == "3PT Field Goal"),
                   made = sum(shot_type == "3PT Field Goal" & shot_made_flag == "shot_yes"),
                   perc_made = made/total), desc(perc_made))
-table_3pt
+knitr::kable(table_3pt, caption = "2PT Effective Shooting Percentage by Player")
 ```
 
-    ## # A tibble: 5 x 4
-    ##   name           total  made perc_made
-    ##   <chr>          <int> <int>     <dbl>
-    ## 1 Klay Thompson    580   246     0.424
-    ## 2 Stephen Curry    687   280     0.408
-    ## 3 Kevin Durant     272   105     0.386
-    ## 4 Andre Iguodala   161    58     0.360
-    ## 5 Draymond Green   232    74     0.319
+| name           |  total|  made|  perc\_made|
+|:---------------|------:|-----:|-----------:|
+| Klay Thompson  |    580|   246|   0.4241379|
+| Stephen Curry  |    687|   280|   0.4075691|
+| Kevin Durant   |    272|   105|   0.3860294|
+| Andre Iguodala |    161|    58|   0.3602484|
+| Draymond Green |    232|    74|   0.3189655|
 
 As for 3-point shots, however, things have changed. Klay Thompson proved to be the best at making 3-point shots, since he had the highest percentage of 3-point shots made (42.4%). Draymond Green was still the worst at giving 3-point shots if measured by the probability of a successful shot (31.9%).
 
@@ -170,17 +168,16 @@ table_overall = arrange(summarise(group_by(shots, name),
                   total = sum(shot_made_flag == "shot_yes" | shot_made_flag == "shot_no"),
                   made = sum(shot_made_flag == "shot_yes"),
                   perc_made = made/total), desc(perc_made))
-table_overall
+knitr::kable(table_overall, caption = "2PT Effective Shooting Percentage by Player")
 ```
 
-    ## # A tibble: 5 x 4
-    ##   name           total  made perc_made
-    ##   <chr>          <int> <int>     <dbl>
-    ## 1 Kevin Durant     915   495     0.541
-    ## 2 Andre Iguodala   371   192     0.518
-    ## 3 Klay Thompson   1220   575     0.471
-    ## 4 Stephen Curry   1250   584     0.467
-    ## 5 Draymond Green   578   245     0.424
+| name           |  total|  made|  perc\_made|
+|:---------------|------:|-----:|-----------:|
+| Kevin Durant   |    915|   495|   0.5409836|
+| Andre Iguodala |    371|   192|   0.5175202|
+| Klay Thompson  |   1220|   575|   0.4713115|
+| Stephen Curry  |   1250|   584|   0.4672000|
+| Draymond Green |    578|   245|   0.4238754|
 
 Finally let's take into consideration of both 2- and 3-point shots and look at the overall successful rate. From the highest to the lowest, the players are Kevin, Andre, Klay, Stephen and Draymond, with the best percentage of 54.1% and the worst of 42.4%.
 

@@ -125,7 +125,7 @@ table_2pt = arrange(summarise(group_by(shots, name),
                   total = sum(shot_type == "2PT Field Goal"),
                   made = sum(shot_type == "2PT Field Goal" & shot_made_flag == "shot_yes"),
                   perc_made = made/total), desc(perc_made))
-table_2pt
+knitr::kable(table_2pt, caption = "2PT Effective Shooting Percentage by Player")
 ```
 
 As for 2-point shots, Andre Iguodala did the best job. Although he had the smallest number of shots made (134) among the five players, he had the highest percentage of 2-point shots made (63.8%). Draymond Green was worst at giving 2-point shots if measured by the probability of a successful shot (49.4%).
@@ -136,7 +136,7 @@ table_3pt = arrange(summarise(group_by(shots, name),
                   total = sum(shot_type == "3PT Field Goal"),
                   made = sum(shot_type == "3PT Field Goal" & shot_made_flag == "shot_yes"),
                   perc_made = made/total), desc(perc_made))
-table_3pt
+knitr::kable(table_3pt, caption = "2PT Effective Shooting Percentage by Player")
 ```
 
 As for 3-point shots, however, things have changed. Klay Thompson proved to be the best at making 3-point shots, since he had the highest percentage of 3-point shots made (42.4%). Draymond Green was still the worst at giving 3-point shots if measured by the probability of a successful shot (31.9%).
@@ -149,7 +149,7 @@ table_overall = arrange(summarise(group_by(shots, name),
                   total = sum(shot_made_flag == "shot_yes" | shot_made_flag == "shot_no"),
                   made = sum(shot_made_flag == "shot_yes"),
                   perc_made = made/total), desc(perc_made))
-table_overall
+knitr::kable(table_overall, caption = "2PT Effective Shooting Percentage by Player")
 ```
 
 Finally let's take into consideration of both 2- and 3-point shots and look at the overall successful rate. From the highest to the lowest, the players are Kevin, Andre, Klay, Stephen and Draymond, with the best percentage of 54.1% and the worst of 42.4%.
