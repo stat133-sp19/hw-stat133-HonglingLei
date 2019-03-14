@@ -5,9 +5,6 @@
 # output(s): added name, calculated minute, replacement of "y" & "n" with "shot_yes" & "shot_no", summary of individual files, combination of all the five files, summary of the combined file
 
 # read files using relative paths
-getwd() # find out the current directory
-setwd("Desktop/hw-stat133/workout1/images") # set the directory somewhere else so we can use relative paths
-getwd()
 iguodala <- read.csv("../data/andre-iguodala.csv", stringsAsFactors = FALSE)
 green <- read.csv("../data/draymond-green.csv", stringsAsFactors = FALSE)
 durant <- read.csv("../data/kevin-durant.csv", stringsAsFactors = FALSE)
