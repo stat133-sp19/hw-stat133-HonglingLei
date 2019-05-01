@@ -1,0 +1,16 @@
+Package: binomial
+Type: Package
+Title: Binomial Distribution
+Version: 0.1.0
+Author: Hongling Lei
+Maintainer: Hongling Lei <honglinglei@berkeley.edu>
+Description: provides functions to check, calculate and plot binomial distribution
+License: GPL-2
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.1.1
+Suggests: 
+    knitr,
+    rmarkdown,
+    testthat
+VignetteBuilder: knitr

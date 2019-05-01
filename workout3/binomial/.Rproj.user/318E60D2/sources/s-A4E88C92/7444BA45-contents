@@ -1,0 +1,99 @@
+
+---
+title: "Getting Started with binomial"
+author: "Hongling Lei"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r echo = FALSE, message= FALSE}
+knitr::opts_chunk$set(collapse = T, comment="#>")
+library(binomial)
+library(ggplot2)
+```
+
+
+## Binomial
+
+The package `"binomial"` is a minimal implementation for binomial experiments. It checks whether the inputs are valid, calculates the probability based on given parameters, and graphs the distribution, displays a summary of expected value, variance, etc.
+
+
+## Calculate number of combinations
+
+Given the number of trials and aimed success, we can calculate the number of possible results. For example, we try 6 times and expect 3 success, and there will be 20 possible situations in total.
+```{r}
+bin_choose(n=5, k=2)
+```
+
+## Calculate the probability
+
+Given the number of trials (n), aimed success (k) and probability of success per trial, we can calculate the probability of getting k success out of n trials. For example, given prob (each trial) = 0.5, we try 6 times and expect 3 success.
+```{r}
+bin_probability(success = 2, trials = 5, prob = 0.5)
+```
+
+## Display a table of success and probability
+
+Given the number of trials and probability of success per trial, we can generate a table with all the possible success and corresponding overall probability. For example, suppose we have 5 trials and probability for each trial is 0.5.
+```{r}
+dis1 <- bin_distribution(trials = 5, prob = 0.5)
+dis1
+```
+
+## Plot a histogram of the table derived
+
+Introduction.Rmd
+
+```{r}
+plot(dis1)
+```
+
+## Calculate the cumulative probability
+
+Based on the table with success and probability we get, we can calculate cumulative probability by adding up the previous probability.
+```{r}
+bin_cum<- bin_cumulative(trials = 5, prob = 0.5)
+bin_cum
+```
+
+## Plot the cumulative probability
+
+Plot a line graph of the table derived.
+```{r}
+plot(bin_cum)
+```
+
+## Calculate summary measures
+
+Suppose we try 5 times and probability per trial is 0.5:
+`bin_mean()` calculates the mean of the binomial distribution.    
+`bin_variance()` calculates the variance of the binomial distribution.    
+`bin_mode()` calculates the mode of the binomial distribution.         
+`bin_skewness()` calculates the skewness the given binomial distribution.        
+`bin_kurtosis()` calculates the kurtosis the given binomial distribution.  
+
+```{r}
+bin_mean(5, 0.5)
+bin_variance(5, 0.5)
+bin_mode(5, 0.5)
+bin_skewness(5, 0.5)
+bin_kurtosis(5, 0.5)
+```
+
+## Create a binomial variable
+
+Given number of trials and probability per trial, we can generate a binomial variable. For example, trials = 5 and prob = 0.5.
+```{r}
+bin_var <- bin_variable(trials=5, prob=0.5)
+bin_var
+```
+
+## Obtain a summary of the binomial variable
+```{r}
+bin_sum <- summary(bin_var)
+bin_sum
+```
