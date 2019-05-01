@@ -36,3 +36,43 @@ devtools::install_github("stat133-sp19/hw-stat133-HonglingLei/workout3/binomial"
 # install "cointoss" (with vignettes)
 devtools::install_github("stat133-sp19/hw-stat133-HonglingLei/workout3/binomial", build_vignettes = TRUE)
 ```
+
+
+## Usage
+
+```{r}
+# calculate number of combinations given number of trials and success
+bin_choose(n=5,k=2)
+
+# calculate the possibility of getting k success out of n trials, given the prob of success per trial
+bin_probability(success = 2, trials = 5, prob = 0.5)
+
+# generate a table with all the possible success and corresponding overall probability
+dis1 <- bin_distribution(trials = 5, prob = 0.5)
+dis1
+
+# Plot a histogram of the table derived
+plot(dis1)
+
+# Calculate cumulative probability by adding up the previous probability based on the table with success and probability we get
+bin_cum<- bin_cumulative(trials = 5, prob = 0.5)
+bin_cum
+
+# Plot the cumulative probability
+plot(bin_cum)
+
+# Calculate summary measures
+bin_mean(10,0.5)
+bin_variance(10,0.5)
+bin_mode(10,0.5)
+bin_skewness(10,0.5)
+bin_kurtosis(10,0.5)
+
+# Create a binomial variable
+bin_var <- bin_variable(trials=5, prob=0.5)
+bin_var
+
+# Obtain a summary of the binomial variable
+bin_sum <- summary(bin_var)
+bin_sum
+```
