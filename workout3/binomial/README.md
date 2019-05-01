@@ -1,24 +1,3 @@
-
----
-title: "README"
-author: "Hongling Lei"
-date: "4/30/2019"
-output: github_document
----
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
-```{r, echo = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>",
-  fig.path = "README-"
-)
-```
-
-
 ## Overview
 
 `"binomial"` is an R package 
