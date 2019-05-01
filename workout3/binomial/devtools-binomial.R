@@ -1,5 +1,3 @@
-devtools-binomial.R
-
 
 # =====================================================
 # Devtools workflow
