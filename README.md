@@ -37,5 +37,6 @@ I created an R package called "binomial" that provides functions to check whethe
 ## Labs
 
 ### Lab 1: Getting Started with R and RStudio
-- [lab01 Finished](https://github.com/stat133-sp19/hw-stat133-HonglingLei/tree/master/lab01-R-basics)\
-[lab01 Instructions](https://github.com/ucb-stat133/stat133-spring-2019/blob/master/labs/lab01-R-basics.md)
+- [Instructions](https://github.com/ucb-stat133/stat133-spring-2019/blob/master/labs/lab01-R-basics.md)
+- [Finished Work](https://github.com/stat133-sp19/hw-stat133-HonglingLei/tree/master/lab01-R-basics)\
+
