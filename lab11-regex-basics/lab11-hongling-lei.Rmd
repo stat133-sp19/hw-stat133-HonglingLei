@@ -1,0 +1,117 @@
+---
+title: "lab11-hongling-lei"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(stringr)
+library(dplyr)
+```
+
+```{r}
+getwd()
+dat <- read.csv("text-emotion.csv")
+```
+
+## 1) Number of characters per tweet*
+```{r}
+nchar_content <- str_count(dat$content)
+summary(nchar_content)
+```
+```{r}
+hist(nchar_content, main = "Histogram of number of characters", breaks = seq(0,200,5))
+```
+```{r}
+# Are there any tweets with 0 characters?
+sum(nchar_content == 0)
+```
+So there is no tweet with 0 character.
+```{r}
+# Are there any tweets with 1 character? If yes (write commands that answer these questions):
+# how many?
+sum(nchar_content == 1)
+# what is their content?
+dat$content[nchar_content == 1]
+# what is their location (i.e. index or position)?
+which(nchar_content == 1)
+```
+
+```{r}
+# What is the tweet with the most characters (i.e. max length)? 
+# (write a command that answers these questions).
+# the number of characters
+max(nchar_content)
+# display its content
+dat$content[nchar_content == max(nchar_content)]
+# what is its location (i.e. index or position)?
+which(nchar_content == max(nchar_content))
+```
+
+## 2) Author (usernames)*
+```{r}
+nchar_user = str_count(dat$author)
+# No longer than 15 characters (if you find usernames longer than 15 characters, display them)
+sum(nchar_user > 15)
+# Contain alphanumeric characters and underscore
+sum(str_detect(dat$author, pattern = "\\W"))
+# If you find usernames containing other symbols, display them. 
+dat$author[str_detect(dat$author, pattern = "\\W")== 1]
+# What is the number of characters of the shortest usernames?
+min(nchar_user)
+```
+
+## 3) Various Symbols and Strings*
+```{r}
+# How many tweets contain at least one caret symbol "^"
+sum(str_detect(dat$content, pattern = "[\\^]{1,}")) # {1,} means more than 1
+# How many tweets contain three or more consecutive dollar symbols "$"
+sum(str_detect(dat$content, pattern = "[\\$]{3,}"))
+# How many tweets do NOT contain the characters "a" or "A"
+sum(!(str_detect(dat$content, fixed('a',ignore_case = TRUE))))
+# Display the first 10 elements of the tweets that do NOT contain the characters "a" or "A"
+head(dat$content[(str_detect(dat$content, fixed('a',ignore_case = TRUE))) == FALSE], 10)
+# compute a vector with the number of exclamation symbols in each tweet, and display its summary().
+num_exc <- str_count(dat$content, pattern = "[\\!]")
+summary(num_exc)
+# What’s the tweet (content) with the largest number of exclamation symbols !? Display its content.
+dat$content[num_exc == max(num_exc)]
+```
+
+## 4) Sentiment*
+```{r}
+# What are the different types of sentiments (i.e. categories)?
+# compute the frequencies
+sent <- table(dat$sentiment)/40000
+sent
+# Graph the relative frequencies (i.e. proportions) with a horizontal barplot in decreasing order
+barplot(sort(sent, decreasing = FALSE), horiz = TRUE, las = 1) # las = 1 means let the name of each sentiment be horizontal
+# compute a table with the average length of characters per sentiment 
+dat2 <- mutate(dat, length = str_count(dat$content))
+summarise(group_by(dat2, sentiment), 
+          avg = mean(length))
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
