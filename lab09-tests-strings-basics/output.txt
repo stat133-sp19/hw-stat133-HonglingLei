@@ -1,0 +1,12 @@
+---
+title: "A random .txt file"
+author: "Hongling Lei"
+date: "4/4/2019"
+output: "html_document"
+---
+
+This is the first line
+A 2nd line
+
+
+The quick brown fox jumps over the lazy dog
