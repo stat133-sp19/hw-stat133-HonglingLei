@@ -6,7 +6,7 @@ output: github_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
-# 1) Importing Data
+### 1) Importing Data
 ```{r}
 # Do the data have a header containing the variable names?
 ```
@@ -52,7 +52,7 @@ str(nba2, vec.len = 1)
 identical(nba, nba2)
 ```
 
-# 2) Technical Questions about importing data
+### 2) Technical Questions about importing data
 ### a)
 ```{r}
 # What happens to the column names of the imported data when you invoke read.csv(datafile, header = FALSE, nrows = 10)?
@@ -90,7 +90,7 @@ Originally in the data.frame, the data have different types such as characters, 
 However, in the matrix, all the data are changed to "character" type.\
 
 
-# 3) Examine Salary
+### 3) Examine Salary
 ### a)
 ```{r}
 summary(nba$salary)
@@ -142,7 +142,7 @@ nba <- nba[!(low == TRUE), ]
 dim(nba)
 ```
 
-# 4) Explore Points
+### 4) Explore Points
 ### a)
 ```{r}
 summary(nba$points)
@@ -160,7 +160,7 @@ hist(log(nba$points))
 Comments:
 The histogram is obviously skewed to the right. Those with a point over e (which is around 2.718) will be located right of 0 in the graph. Otherwise it would be negative. Looking at the points data, most players scored points over 2.718, which complies with the graphing results. Also we can see that most logs fall between 6 and 7, which is somewhere near the mean and median.
 
-# 5) Transforming Age into a Factor
+### 5) Transforming Age into a Factor
 ### a)
 ```{r}
 boxplot(salary2~age, data = nba, xlab = "Age", ylab = "Salary (in millions)")
@@ -186,7 +186,7 @@ age2 <- cut(age2, breaks = c(20, 25, 30, max(age2)+1), right = FALSE, label = c(
 summary(age2)
 ```
 
-# 6）Plotting Salary against Points, by Age Group
+### 6）Plotting Salary against Points, by Age Group
 ```{r}
 salary = log(nba$salary)
 points = log(nba$points)
@@ -216,7 +216,7 @@ plot(log(salary) ~ log(points), data = nba, log = "xy", main = "", xlab = "Point
 legend("bottomright", fill = palette1, legend = levels(age2), title = "Age Groups", cex = 0.8)
 ```
 
-# 7) Plotting Salary Against Points, by Position
+### 7) Plotting Salary Against Points, by Position
 ### a)
 ```{r}
 # Begin by making a conditional boxplot of salary2 by position. Compare the boxplots by age, and comment on whether there seems to be a difference in salaries depending on the position of the players.

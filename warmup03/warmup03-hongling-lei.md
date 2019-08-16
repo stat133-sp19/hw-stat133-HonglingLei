@@ -1,8 +1,7 @@
 warmup03-hongling-lei
 ================
 
-1) Importing Data
-=================
+### 1) Importing Data
 
 ``` r
 # Do the data have a header containing the variable names?
@@ -100,8 +99,7 @@ identical(nba, nba2)
 
     ## [1] TRUE
 
-2) Technical Questions about importing data
-===========================================
+### 2) Technical Questions about importing data
 
 ### a)
 
@@ -156,8 +154,7 @@ The values are unchanged, but the data types are all changed.
 Originally in the data.frame, the data have different types such as characters, integers, etc.
 However, in the matrix, all the data are changed to "character" type.
 
-3) Examine Salary
-=================
+### 3) Examine Salary
 
 ### a)
 
@@ -244,8 +241,7 @@ dim(nba)
 
     ## [1] 469  15
 
-4) Explore Points
-=================
+### 4) Explore Points
 
 ### a)
 
@@ -275,8 +271,7 @@ hist(log(nba$points))
 
 Comments: The histogram is obviously skewed to the right. Those with a point over e (which is around 2.718) will be located right of 0 in the graph. Otherwise it would be negative. Looking at the points data, most players scored points over 2.718, which complies with the graphing results. Also we can see that most logs fall between 6 and 7, which is somewhere near the mean and median.
 
-5) Transforming Age into a Factor
-=================================
+### 5) Transforming Age into a Factor
 
 ### a)
 
@@ -311,8 +306,7 @@ summary(age2)
     ## 20-24 25-30   30+ 
     ##   186   176   115
 
-6）Plotting Salary against Points, by Age Group
-===============================================
+### 6）Plotting Salary against Points, by Age Group
 
 ``` r
 salary = log(nba$salary)
@@ -356,8 +350,7 @@ legend("bottomright", fill = palette1, legend = levels(age2), title = "Age Group
 
 ![](warmup03-hongling-lei_files/figure-markdown_github/unnamed-chunk-30-1.png)
 
-7) Plotting Salary Against Points, by Position
-==============================================
+### 7) Plotting Salary Against Points, by Position
 
 ### a)
 
