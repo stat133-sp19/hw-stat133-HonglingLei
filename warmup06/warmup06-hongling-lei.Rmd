@@ -1,0 +1,273 @@
+---
+title: "warmup06-hongling-lei"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## 1) Future Value Function
+```{r}
+#' @title future value function
+#' @description calculates the future value based on the present value, interest rate and time
+#' @param amount initial invested amount
+#' @param rate annual rate of return
+#' @param years number of years
+#' @return computed future value
+
+future_value <- function(amount, rate, years){
+  FV = amount * (1 + rate) ^ years
+  return(FV)
+}
+
+# test:
+future_value(amount = 100, rate = 0.05, years = 1) 
+future_value(amount = 500, rate = 0.05, years = 5) 
+future_value(amount = 1000, rate = 0.05, years = 10)
+```
+
+
+## 2) Future Value of Annuity
+```{r}
+#' @title future value of annuity
+#' @description calculates the future value based on deposit per year, annual rate of return and time
+#' @param contrib contributed amount
+#' @param rate annual rate of return
+#' @param years number of years
+#' @return computed future value
+
+annuity <- function(contrib, rate, years){
+  FVA = contrib * (((1 + rate) ^ years -1) / rate)
+  return(FVA)
+}
+
+# test:
+annuity(contrib = 200, rate = 0.05, years = 1) 
+annuity(contrib = 200, rate = 0.05, years = 2) 
+annuity(contrib = 200, rate = 0.05, years = 10)
+```
+
+## 3) Future Valule of Growing Annuity
+```{r}
+#' @title future value of growing annuity
+#' @description calculates the future value based on the first deposit, annual rate of return, growth rate and time
+#' @param contrib contributed amount
+#' @param rate annual rate of return
+#' @param growth annual growth rate
+#' @param years number of years
+#' @return computed future value
+
+growing_annuity <- function(contrib, rate, growth, years){
+  FVGA = contrib * (((1 + rate) ^ years - (1 + growth) ^ years) / (rate - growth))
+  return(FVGA)
+}
+
+growing_annuity(contrib = 200, rate = 0.05, growth = 0.03, years = 1)
+growing_annuity(contrib = 200, rate = 0.05, growth = 0.03, years = 2)
+growing_annuity(contrib = 200, rate = 0.05, growth = 0.03, years = 10)
+```
+
+## 4) Investing Modalities
+#### 4.1) For-loop and Table
+```{r}
+no_contrib = rep(1000, 11)
+
+for (i in 2:11) {
+  no_contrib[i] = future_value(amount = no_contrib[i-1], rate = 0.05, years = 1)
+}
+
+no_contrib
+```
+
+```{r}
+fixed_contrib = rep(1000, 11)
+
+for (i in 2:11) {
+  fixed_contrib[i] = future_value(amount = 1000, rate = 0.05, years = i-1) + annuity(contrib = 200, rate = 0.05, years = i-1)
+}
+
+fixed_contrib
+```
+
+```{r} 
+growing_contrib = rep(1000, 11)
+
+for (i in 2:11) {
+  growing_contrib[i] = future_value(amount = 1000, rate = 0.05, years = i-1) + growing_annuity(contrib = 200, rate = 0.05, growth = 0.03, years = i-1)
+}
+
+growing_contrib
+```
+
+```{r}
+modalities = data.frame(
+  year = c(0:10),
+  no_contrib = no_contrib,
+  fixed_contrib = fixed_contrib,
+  growing_contrib = growing_contrib
+)
+
+modalities
+```
+
+#### 4.2) Timeline Graph
+#### Method 1: using plot
+```{r}
+plot(modalities$year, modalities$no_contrib, type = "l", lwd=3,
+     ylab = "Annual Balance",
+     xlab = "Year", ylim = c(0,4600), col = "#eac1ad", cex.lab = 1)
+
+# add grid in the background
+grid(nx = NULL, ny = NULL, col = "#e1e1e1", lty = "solid", lwd = 1, equilogs = TRUE)
+
+axis(side = 1, at = seq(0, 10, 1), labels = seq(0, 10, 1), lwd.ticks = 0.5, tcl = 0.2)
+axis(side = 2, at = seq(0, 4000, 500), labels = seq(0, 4000, 500), lwd.ticks = 0.5, tcl = 0.2)
+
+lines(modalities$year, modalities$fixed_contrib, col="#e0a384", lwd=3)
+lines(modalities$year, modalities$growing_contrib, col="#cc6633", lwd=3)
+
+legend("topleft", legend = c("Growing contribution", "Fixed contribution", "No contribution"), 
+       col = c("#cc6633", "#e0a384", "#eac1ad"), lty = "solid", lwd = 3, cex = 1)
+title(main = "Annual Balances for each saving modality")
+```
+
+#### Method 2: using ggplot
+```{r}
+library(ggplot2)
+
+ggplot(data = modalities)+
+  
+  theme_light() +
+  
+  labs(x = 'Year', y = 'Annual Balance', title = 'Annual Balances for each saving modality') +
+  
+  geom_line(aes(x = year, y = growing_contrib), color = "#cc6633") +
+  geom_line(aes(x = year, y = fixed_contrib ), color ="#e0a384") +
+  geom_line(aes(x = year, y = no_contrib ), color = "#eac1ad") +
+  
+  scale_x_continuous(breaks = seq(0,10,1)) +
+  scale_y_continuous(breaks = seq(0,5000,250)) +
+  
+  annotate(geom = "text", x = 7.3, y = 4000, label = "Growing contribution") +
+  annotate(geom = "text", x = 9, y = 3200, label = "Fixed contribution") +
+  annotate(geom = "text", x = 9.5, y = 1350, label = "No contribution")
+```
+
+## 5) Saving Simulation
+#### 5.1) For loops
+```{r}
+# a) For regular saving accounts:
+regular_no_contrib = rep(10000,16)
+
+regular_fixed_contrib = rep(10000,16)
+for (i in 2:16) {
+  regular_fixed_contrib[i]  = future_value(amount = 10000, rate = 0.001, years = i-1) +
+    annuity(contrib = 2000, rate = 0.001, years = i-1)
+}
+
+regular_growing_contrib = rep(10000,16)
+for (i in 2:16) {
+  regular_growing_contrib[i] = future_value(amount = 10000, rate = 0.001, years = i-1) +
+    growing_annuity(contrib = 2000, rate = 0.001, growth = 0.04, years = i-1)
+}
+
+for (i in 2:16) {
+  regular_no_contrib[i] =  future_value(amount = 10000, rate = 0.001, years = i-1)
+}
+```
+
+```{r}
+# b) For high yield saving accounts:
+high_no_contrib = rep(10000,16) 
+
+high_fixed_contrib = rep(10000,16)
+for (i in 2:16) {
+  high_fixed_contrib[i]  = future_value(amount = 10000, rate = 0.0225, years = i-1) +
+    annuity(contrib = 2000, rate = 0.0225, years = i-1)
+}
+
+high_growing_contrib = rep(10000,16)
+for (i in 2:16) {
+  high_growing_contrib[i] = future_value(amount = 10000, rate = 0.0225, years = i-1) + 
+    growing_annuity(contrib = 2000, rate = 0.0225, growth = 0.04, years = i-1)
+}
+
+for (i in 2:16) {
+  high_no_contrib[i] =  future_value(amount = 10000, rate = 0.0225, years = i-1)
+}
+```
+
+```{r}
+# c) For low costs index mutual funds:
+index_no_contrib = rep(10000,16) 
+  
+index_fixed_contrib = rep(10000,16)
+for (i in 2:16) {
+  index_fixed_contrib[i]  = future_value(amount = 10000, rate = 0.065, years = i-1) + 
+    annuity(contrib = 2000, rate = 0.065, years = i-1)
+}
+
+index_growing_contrib = rep(10000,16)
+for (i in 2:16) {
+  index_growing_contrib[i] = future_value(amount = 10000, rate = 0.065, years = i-1) + 
+    growing_annuity(contrib = 2000, rate = 0.065, growth = 0.04, years = i-1)
+}
+
+for (i in 2:16) {
+  index_no_contrib[i] =  future_value(amount = 10000, rate = 0.065, years = i-1)
+}
+```
+
+#### 5.2) Facet Timeline Graph
+```{r}
+# First we should sort and clean data
+money_data = data.frame(
+
+year = rep(0:15,9),
+
+balance = c(regular_no_contrib, regular_fixed_contrib, 
+            regular_growing_contrib, high_no_contrib, 
+            high_fixed_contrib, high_growing_contrib, 
+            index_no_contrib, index_fixed_contrib, 
+            index_growing_contrib),
+
+modality = c(rep("no_contrib", 16), rep("fixed_contrib",16),
+             rep("growing_contrib",16), rep("no_contrib",16), 
+             rep("fixed_contrib",16), rep("growing_contrib",16),
+             rep("no_contrib",16), rep("fixed_contrib",16), 
+             rep("growing_contrib",16)),
+
+# 3 * 16 = 48
+return = c(rep("regular savings",48), rep("high-yield savings",48), rep("index fund",48))
+)
+
+# to change returns to a factor
+money_data$return = factor(money_data$return, 
+                           levels = c("regular savings", "high-yield savings", "index fund"))
+```
+
+```{r}
+# graphing
+ggplot(money_data)+
+  geom_line(aes(x = year, y = balance, color = modality)) +
+  geom_point(aes(x = year,  y = balance, color = modality), cex = 0.5) +
+  facet_wrap(~return) +
+  labs(x = "year", y = "balance", 
+       title = "Annual Balance with Different Return Rates and Modalities") +
+  scale_x_continuous(breaks = seq(0, 15, 5)) +
+  scale_y_continuous(breaks = seq(0, 120000, 30000)) +
+  theme_bw()
+```
+
+
+
+
+
+
+
+
+
+
+
+
