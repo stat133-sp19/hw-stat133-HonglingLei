@@ -1,0 +1,229 @@
+---
+title: "lab03-hongling-lei"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+# Lab 3: Data Frame Basics
+# Abalone Data Set
+1. What’s the character delimiter?\
+   The character delimiter is comma.\
+2. Is there a row for column names?\
+   No.\
+3. Are there any missing values?\
+   No.\
+4. What is the data type of each column?\
+   Nominal, continuous, continuous, continuous, continuous, continuous, continuous, continuous, integer.
+
+# Basic Importing
+```{r}
+url <- "http://archive.ics.uci.edu/ml/machine-learning-databases/abalone/abalone.data"
+# download it to your working directory
+origin <- 'http://archive.ics.uci.edu/ml/machine-learning-databases/abalone/abalone.data'
+destination <- 'abalone.data'
+download.file(origin, destination)
+
+abalone <- read.table(url, sep = ",")
+# Another way to import the data
+abalone <- read.table("abalone.data", sep = ",")
+# take a peek of first rows
+head(abalone)
+```
+
+```{r}
+# take a peek of last rows
+tail(abalone)
+```
+```{r}
+# check data frame's structure
+str(abalone, vec.len = 1)
+```
+```{r}
+column_names <- c("Sex", "Length", "Diameter", "Height", "Whole", "Shucked", "Viscera", "Shell", "Rings")
+column_types <- c("character", "real", "real", "real", "real", "real", "real", "real", "integer")
+abalone <- read.table("abalone.data", sep = ",", col.names = column_names, colClasses = column_types)
+str(abalone)
+```
+```{r}
+abalone2 <- read.csv("abalone.data", sep = ",", col.names = column_names, colClasses = column_types, header = FALSE)
+str(abalone2)
+```
+```{r}
+abalone10 <- head(abalone, 10)
+str(abalone10)
+```
+```{r}
+abalone20 <- read.table("abalone.data", sep = ",", skip = 10, nrows = 10, col.names = column_names, colClasses = column_types)
+str(abalone20)
+```
+**The document is like this:**\
+"character. A vector of classes to be assumed for the columns. If unnamed, recycled as necessary. If named, names are matched with unspecified values being taken to be NA.
+Possible values are NA (the default, when type.convert is used), "NULL" (when the column is skipped), one of the atomic vector classes (logical, integer, numeric, complex, character, raw), or "factor", "Date" or "POSIXct". Otherwise there needs to be an as method (from package methods) for conversion from "character" to the specified formal class.
+Note that colClasses is specified per column (not per variable) and so includes the column of row names (if any)."\
+**What happens when you specify the data-type of one or more columns as "NULL"?**\
+The column will be skipped.
+```{r}
+str(abalone)
+```
+```{r}
+summary(abalone)
+```
+```{r}
+head(abalone)
+```
+```{r}
+tail(abalone)
+```
+```{r}
+dim(abalone)
+```
+```{r}
+names(abalone)
+```
+```{r}
+colnames(abalone)
+```
+```{r}
+nrow(abalone)
+```
+```{r}
+ncol(abalone)
+```
+```{r}
+Min <- c(min(abalone$Length), min(abalone$Diameter), min(abalone$Height), min(abalone$Whole), min(abalone$Shucked), min(abalone$Viscera), min(abalone$Shell), min(abalone$Rings))
+Max <- c(max(abalone$Length), max(abalone$Diameter), max(abalone$Height), max(abalone$Whole), max(abalone$Shucked), max(abalone$Viscera), max(abalone$Shell),max(abalone$Rings))
+Mean <- c(mean(abalone$Length), mean(abalone$Diameter), mean(abalone$Height), mean(abalone$Whole), mean(abalone$Shucked), mean(abalone$Viscera), mean(abalone$Shell), mean(abalone$Rings))
+SD <- c(sd(abalone$Length), sd(abalone$Diameter), sd(abalone$Height), sd(abalone$Whole), sd(abalone$Shucked), sd(abalone$Viscera), sd(abalone$Shell), sd(abalone$Rings))
+mat <- rbind(Min,Max,Mean,SD)
+colnames(mat) <- c("Length", "Diam", "Height", "Whole", "Shucked", "Viscera", "Shell", "Rings")
+data.frame(mat)
+```
+# Filtering, Slicing, and Selecting
+```{r}
+# first three rows
+three_rows <- abalone[1:3, ]
+three_rows
+# subset rows given a condition
+# (length greater than 0.6)
+length_diam <- abalone[ ,c('Length', 'Diameter')]
+head(length_diam)
+```
+```{r}
+# slice the data by selecting the first 5 rows
+abalone[1:5,]
+```
+```{r}
+# slice the data by selecting rows 5, 10, 15, 20, 25, …, 50.
+sliced_by_5 <- abalone[seq(5, 50, 5), ]
+sliced_by_5
+```
+```{r}
+# slice the data by selecting the last 5 rows; try doing this without using tail(), and without hard coding the numbers of the alst five rows.
+abalone[seq(nrow(abalone)-4, nrow(abalone), 1), ]
+```
+```{r}
+# create a data frame height14 by filtering the data with those abalones with Height less than 0.14, and display its dimensions with dim()
+height14 <- data.frame(abalone[abalone$Height < 0.14, ])
+dim(height14)
+```
+```{r}
+# create a data frame infant by filtering the data about Infant abalones, and display its dimensions with dim()
+infant <- data.frame(abalone[abalone$Sex == "I", ])
+dim(infant)
+```
+```{r}
+# create a data frame male_female by filtering the data with Male and Female abalones, and display its dimensions with dim()
+male_female <- data.frame(abalone[abalone$Sex == "M" | abalone$Sex == "F", ])
+dim(male_female)
+```
+```{r}
+# filter the data with those abalones with more than 25 Rings, displaying only their Sex, and Rings.
+aba <- abalone[abalone$Rings >= 25, ]
+aba$Sex
+aba$Rings
+```
+```{r}
+inf <- infant[infant$Rings > 3 & infant$Rings < 6, ]
+inf$Sex
+inf$Rings
+inf$Diameter
+```
+# Adding new variables and Sorting rows
+```{r}
+# creating a small data frame
+abies <- abalone[abalone$Sex == 'I', c('Length', 'Height', 'Diameter')]
+abies$Ht_Len <- abies$Height / abies$Length
+abies2 <- abies[order(abies$Length, decreasing = TRUE), ]
+```
+```{r}
+# using the data frame abies, add a new variable product with the product of Whole and Shucked.
+abies4 <- abalone[abalone$Sex == 'I', c('Whole', 'Shucked')]
+abies$Product = abies4$Whole * abies4$Shucked
+# create a new data frame abies3, by adding columns log_height and log_length with the log transformations of height and length.
+abies3 <- abalone[abalone$Sex == 'I', c('Length', 'Height', 'Diameter')]
+abies3$log_height <- log(abies3$Height)
+abies3$log_length <- log(abies3$Length)
+# use the original data frame abalone to filter and arrange those abalones with height less than 0.12, in increasing order.
+abalone <- read.table("abalone.data", sep = ",", col.names = column_names, colClasses = column_types)
+abalone2 <- abalone[abalone$Height < 0.12, ]
+str(abalone2[order(abalone2$Height, decreasing = FALSE), ])
+```
+```{r}
+# display a data frame with the Sex, Diameter, and Rings, of the top-5 highest abalones
+temp <- abalone[order(abalone$Height, decreasing = TRUE), ]
+temp[1:5, ]
+```
+```{r}
+# display a data frame with the Sex, Diameter, and Rings, of the top-5 longest abalones
+temp <- abalone[order(abalone$Length, decreasing = TRUE), ]
+temp[1:5, ]
+```
+# Basic Plots
+```{r}
+table_sex <- table(abalone$Sex)
+barplot(table_sex)
+hist(abalone$Diameter)
+boxplot(abalone$Diameter, horizontal = TRUE)
+```
+```{r}
+plot(abalone$Height)
+```
+```{r}
+plot(factor(abalone$Sex)) # We have to change the data type into factor to make the graph
+```
+```{r}
+plot(abalone$Height, abalone$Length)
+```
+```{r}
+plot(data.frame(abalone$Height, abalone$Length))
+```
+```{r}
+plot(data.frame(abalone$Height, abalone$Length, abalone$Diameter))
+```
+```{r}
+plot(data.frame(abalone$Sex, abalone$Length))
+```
+```{r}
+plot(data.frame(abalone$Length, abalone$Sex))
+```
+# Your Turn: Scatter Diagrams
+```{r}
+plot.default(abalone$Height, abalone$Length, pch = 20, col = c("blue", "light yellow", "green", "pink"),
+xlab = "Height", ylab = "Length", cex = 0.5,
+main = "Relationship Between Height and Length of Abalones", 
+sub = "According to UCI data")
+```
+
+
+
+
+
+
+
+
+
+
+
+
