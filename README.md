@@ -20,3 +20,15 @@ In this project, I created a Shiny App that allows users to visualize - in an in
 
 - [Workout 3](workout3)\
 I created an R package called "binomial" that provides functions to check whether the inputs are valid, to calculate the probability based on given parameters, to graph the distribution and to display a summary of expected value, variance, skewness, kurtosis, etc.
+
+-----
+
+## Warmup Homework
+
+- [Warmup 1](https://github.com/stat133-sp19/hw-stat133-HonglingLei/tree/master/warmup01)
+- [Warmup 2](https://github.com/stat133-sp19/hw-stat133-HonglingLei/tree/master/warmup02)
+- [Warmup 3](https://github.com/stat133-sp19/hw-stat133-HonglingLei/tree/master/warmup03)
+- [Warmup 4](https://github.com/stat133-sp19/hw-stat133-HonglingLei/tree/master/warmup04)
+- [Warmup 5](https://github.com/stat133-sp19/hw-stat133-HonglingLei/tree/master/warmup05)
+- [Warmup 6](https://github.com/stat133-sp19/hw-stat133-HonglingLei/tree/master/warmup06)
+
