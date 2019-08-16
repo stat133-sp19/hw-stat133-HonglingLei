@@ -1,0 +1,90 @@
+---
+title: "lab12-hongling-lei"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(XML)
+library(xml2)
+library(rvest)
+library(magrittr)
+library(stringr)
+```
+
+```{r}
+basket <- "https://www.basketball-reference.com"
+bos <- "/teams/BOS/2017.html"
+bos_url <- paste0(basket, bos)
+bos_roster <- readHTMLTable("bos-roster-2017.html")
+nba_html <- paste0(basket, "/leagues/NBA_2017.html")
+xml_doc <- read_html(nba_html)
+xml_tables <- xml_doc %>%
+  html_nodes("table") %>%
+  extract(1:2)
+```
+
+## Your Turn*:
+```{r}
+# Store the href attributes in a character vector hrefs.
+nodes <- html_nodes(xml_tables, "a")
+hrefs <- html_attr(nodes, "href")
+
+# Use string manipulation functions to create a character vector teams that contains just the team abbreviations: e.g. "BOS", "CLE", "TOR", ...
+teams <- str_sub(hrefs, start=8, end = 10) # extract the 8th to the 10th character in hrefs
+
+# Create a character vector files with elements: "BOS-roster-2017.csv", "CLE-roster-2017.csv", "TOR-roster-2017.csv"
+files <- paste0(teams,"-roster-2017.csv")
+
+# Use the object basket and the first element of hrefs (i.e. hrefs[1]) to assemble a team_url like the one used for gsw_url:
+basket <- "https://www.basketball-reference.com"
+bos <- hrefs[1]
+
+# Read the html document of team_url.
+team_url <- paste0(basket, bos)
+
+# Use html_table() to extract the content of the html table as a data frame called roster.
+download.file(team_url, "bos-roster-2017.html")
+bos_roster <- read_html("bos-roster-2017.html")
+roster_table <- html_table(bos_roster)
+
+# Store the data frame in a csv file: "BOS-roster-2017.csv".
+write.csv(roster_table, "BOS-roster-2017.csv")
+```
+
+Having making sure that your code above works, now generalize it to more teams. In theory, your code should be able to collect all 30 roster tables. However, since everyone will be making constant requests to the basketball-reference website at the same time, write code that scrapes a couple of roster tables (e.g. 5 or 7 teams).
+```{r}
+# Create a for () loop to extract a handful of the roster tables as data frames.
+for (i in 15:20){
+  team_url <- paste0(basket, hrefs[i])
+  download.file(team_url, paste(teams[i], "-roster-2017.html"))
+  i_roster <- read_html(paste(teams[i], "-roster-2017.html"))
+  roster_table <- html_table(i_roster)
+  write.csv(roster_table, files[i])
+}
+```
+
+## Challenge*:
+```{r}
+# Using all the saved csv files, how would you build a global table containing the extracted rosters, in a way that this table would also have a column for the team?
+# Try getting such a global table and save it in a file nba-rosters-2017.csv
+global_data <- read.csv(files[15], sep=",")
+for (i in 16:20){
+  temp <- read.csv(files[i], sep=",")
+  global_data = rbind(global_data, temp)
+}
+
+write.csv(global_data, "nba-rosters-2017.csv")
+read.csv("nba-rosters-2017.csv")
+```
+
+
+
+
+
+
+
+
