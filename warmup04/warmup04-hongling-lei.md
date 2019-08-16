@@ -1,8 +1,7 @@
 warmup04-hongling-lei
 ================
 
-1) Importing Data
-=================
+### 1) Importing Data
 
 ``` r
 datafile <- 'https://github.com/ucb-stat133/stat133-hws/raw/master/data/nba2018-players.csv'
@@ -84,8 +83,7 @@ class(dat)
 
     ## [1] "spec_tbl_df" "tbl_df"      "tbl"         "data.frame"
 
-2) Technical Questions about "readr"
-====================================
+### 2) Technical Questions about "readr"
 
 ### a)
 
@@ -121,8 +119,7 @@ col.names
 na = c("", "NA")
 col\_types
 
-3) Salaries by Team
-===================
+### 3) Salaries by Team
 
 ### a)
 
@@ -240,8 +237,7 @@ ggplot(graph_dat, aes(x=reorder(team, total_salary), y=total_salary)) +
 # Since a flip is used here, the vertical line should originally be a horizontal line, so there should be geom_hline!!!!! and "yintercept"
 ```
 
-4) Points by Team
-=================
+### 4) Points by Team
 
 ### a)
 
@@ -328,8 +324,7 @@ ggplot(data2, aes(x=reorder(team, total_points), y=total_points)) +
 
 ![](warmup04-hongling-lei_files/figure-markdown_github/unnamed-chunk-13-1.png)
 
-5) Cost of Scored Points
-========================
+### 5) Cost of Scored Points
 
 ### a)
 
