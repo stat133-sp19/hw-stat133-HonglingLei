@@ -1,0 +1,229 @@
+---
+title: "lab02-hongling-lei"
+output: html_document
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+# Getting the Data File
+```{r}
+ls()
+```
+
+```{r}
+rdata <- "https://github.com/ucb-stat133/stat133-labs/raw/master/data/nba2018-salary-points.RData"
+download.file(url = rdata, destfile = '~/Desktop/lab/lab02-vector-basics/nba2018-salary-points.RData')
+load('nba2018-salary-points.RData')
+```
+
+```{r}
+four <- head(player, n = 4)
+four[1]
+```
+```{r}
+four[0]
+```
+```{r}
+four[-1] # R removes the first element, so three are left.
+```
+```{r}
+four[-c(1,2,3)] # R removes the first three element, so only the fourth is left.
+```
+```{r}
+four[5] # 5 exceeds the total length.
+```
+```{r}
+four[c(1,2,2,3,3,3)]
+```
+```{r}
+# all the even elements in player
+even_numbers = seq(2, length(player), 2)
+even_players = player[even_numbers]
+even_players
+```
+```{r}
+# all the odd elements in salary
+odd_numbers = seq(1, length(salary), 2)
+odd_salaries = salary[odd_numbers]
+odd_salaries
+```
+```{r}
+# all multiples of 5 (e.g. 5, 10, 15, etc) of team
+multiples_of_five = seq(5, length(team), 5)
+five_teams = team[multiples_of_five]
+five_teams
+```
+```{r}
+# elements in positions 10, 20, 30, 40, etc of scored
+scored[seq(10, length(scored), 10)]
+```
+```{r}
+# all the even elements in team but this time in reverse order
+even_teams = seq(2, length(team), 2)
+team[sort(even_teams, decreasing = TRUE)]
+```
+
+
+# Logical Subsetting and Comparisons
+```{r}
+scored_four <- scored[1:4]
+
+# elements greater than 100
+scored_four[scored_four > 100]
+
+# elements less than 100
+scored_four[scored_four < 100]
+
+# elements less than or equal to 10
+scored_four[scored_four <= 10]
+
+# elements different from 10
+scored_four[scored_four != 10]
+```
+```{r}
+# AND
+TRUE & TRUE
+TRUE & FALSE
+FALSE & FALSE
+
+# OR
+TRUE | TRUE
+TRUE | FALSE
+FALSE | FALSE
+
+# NOT
+!TRUE
+!FALSE
+```
+```{r}
+# players in position Center, of Warriors (GSW)
+subset(player, position == 'C' & team == 'GSW')
+```
+```{r}
+# players of both GSW (warriors) and LAL (lakers)
+subset(player, team == 'GSW' | team == 'LAL')
+```
+```{r}
+# players in positions Shooting Guard and Point Guards, of Lakers (LAL)
+subset(player, (position == 'SG' | position == 'PG') & team == 'LAL')
+```
+
+```{r}
+# subset Small Forwards of GSW and LAL
+subset(player, position == 'SF' & (team == 'GSW' | team == 'LAL'))
+```
+
+```{r}
+# name of the player with largest salary
+player[which.max(salary)]
+```
+```{r}
+# name of the player with smallest salary
+player[which.min(salary)]
+```
+```{r}
+# name of the player with largest number of scored points
+player[which.max(scored)]
+```
+```{r}
+# salary of the player with largest number of points
+salary[which.max(scored)]
+```
+```{r}
+# largest salary of all Centers
+max(salary[position == 'C'])
+```
+```{r}
+# team of the player with the largest number of scored points
+team[which.max(scored)]
+```
+```{r}
+# name of the player with the largest number of 3-pointers
+player[which.max(points3)]
+```
+
+
+
+# Some Plotting
+```{r}
+plot(scored, salary)
+```
+```{r}
+library(plotly)
+```
+```{r}
+plot_ly(x = scored, y = salary, type = "scatter", mode = "markers")
+```
+```{r}
+log_scored <- log(scored)
+log_salary <- log(salary)
+plot(log_scored, log_salary)
+```
+```{r}
+plot(log_scored, log_salary)
+text(log_scored, log_salary, labels = player)
+```
+```{r}
+plot(log_scored, log_salary)
+text(log_scored, log_salary, labels = abbreviate(player))
+```
+```{r}
+# My turn create a scatterplot of points and salary for the Warriors (GSW), displaying the names of the players. Generate two scatterplots, one with raw values (original scale, and another plot with log-transformations).
+GSW_points <- scored[team == 'GSW']
+GSW_salary <- salary[team == 'GSW']
+Player_name <- player[team == 'GSW']
+plot(GSW_points, GSW_salary)
+text(GSW_points, GSW_salary, labels = abbreviate(Player_name))
+```
+```{r}
+log_GSW_points <- log(scored[team == 'GSW'])
+log_GSW_salary <- log(salary[team == 'GSW'])
+Player_name <- player[team == 'GSW']
+plot(log_GSW_points, log_GSW_salary)
+text(log_GSW_points, log_GSW_salary, labels = abbreviate(Player_name))
+```
+
+
+
+# Factors
+```{r}
+is.factor(team)
+class(team)
+```
+```{r}
+position_fac <- factor(position)
+table(position_fac)
+```
+```{r}
+# My Turn
+# positions of Warriors
+position_fac[team == 'GSW']
+```
+```{r}
+# positions of players with salaries > 15 millions
+position_fac[salary > 15000000]
+```
+```{r}
+# frequencies (counts) of positions with salaries > 15 millions
+frequency1 <- position_fac[salary > 15000000]
+table(frequency1)
+```
+```{r}
+# relative frequencies (proportions) of ‘SG’ (Shooting Guards) in each team
+team_fac <- factor(team)
+table(team_fac[position == 'SG']) / table(team_fac)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
