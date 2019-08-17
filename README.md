@@ -37,7 +37,7 @@ I created an R package called "binomial" that provides functions to check whethe
 ## Labs
 
 ### Lab 1: R and RStudio
-* Get started with R as a scientific calculator
+  * Get started with R as a scientific calculator
 * Understand pane layout of RStudio
 * Understand the help documentation in R
 * How to install packages
