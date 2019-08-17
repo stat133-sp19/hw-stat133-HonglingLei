@@ -37,40 +37,40 @@ I created an R package called "binomial" that provides functions to check whethe
 ## Labs
 
 ### Lab 1: R and RStudio
-> Get started with R as a scientific calculator
-> Understand pane layout of RStudio
-> Understand the help documentation in R
-> How to install packages
-> Difference between .R and .Rmd files
-> Get to know markdown syntax
+> Get started with R as a scientific calculator\
+> Understand pane layout of RStudio\
+> Understand the help documentation in R\
+> How to install packages\
+> Difference between .R and .Rmd files\
+> Get to know markdown syntax\
 - [Instructions](https://github.com/ucb-stat133/stat133-spring-2019/blob/master/labs/lab01-R-basics.md)
 - [Finished Work](https://github.com/stat133-sp19/hw-stat133-HonglingLei/tree/master/lab01-R-basics)
 
 ### Lab 2: Vectors
-> Work with vectors of different data types
-> Understand the concept of atomic structures
-> Learn how to subset and slice R vectors
-> Understand the concept of vectorization
-> Understand recycling rules in R
+> Work with vectors of different data types\
+> Understand the concept of atomic structures\
+> Learn how to subset and slice R vectors\
+> Understand the concept of vectorization\
+> Understand recycling rules in R\
 - [Instructions](https://github.com/ucb-stat133/stat133-spring-2019/blob/master/labs/lab01-R-basics.md)
 - [Finished Work](https://github.com/stat133-sp19/hw-stat133-HonglingLei/tree/master/lab02-vector-basics)
 
 ### Lab 3: Data Frame Basics
-> Importing Data Tables in R
-> Default reading-table functions
-> Basic manipulation of data frames
+> Importing Data Tables in R\
+> Default reading-table functions\
+> Basic manipulation of data frames\
 - [Instructions](https://github.com/ucb-stat133/stat133-spring-2019/blob/master/labs/lab03-data-tables.md)
 - [Finished Work](https://github.com/stat133-sp19/hw-stat133-HonglingLei/tree/master/lab03-data-tables)
 
 ### Lab 4: Data Frame Basics
-> Get started with `"dplyr"`
-> Get to know the basic dplyr verbs:
-> `slice()`, `filter()`, `select()`
-> `mutate()`
-> `arrange()`
-> `summarise()`
-> `group_by()`
-> Get started with `"ggplot2"`
-> Produce basic plots with `ggplot()`
+> Get started with `"dplyr"`\
+> Get to know the basic dplyr verbs:\
+> `slice()`, `filter()`, `select()`\
+> `mutate()`\
+> `arrange()`\
+> `summarise()`\
+> `group_by()`\
+> Get started with `"ggplot2"`\
+> Produce basic plots with `ggplot()`\
 - [Instructions](https://github.com/ucb-stat133/stat133-spring-2019/blob/master/labs/lab04-dplyr-ggplot-basics.md)
 - [Finished Work](https://github.com/stat133-sp19/hw-stat133-HonglingLei/tree/master/lab04-dplyr-ggplot-basics)
