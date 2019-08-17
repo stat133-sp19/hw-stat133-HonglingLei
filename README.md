@@ -42,7 +42,7 @@ I created an R package called "binomial" that provides functions to check whethe
 > Understand the help documentation in R\
 > How to install packages\
 > Difference between .R and .Rmd files\
-> Get to know markdown syntax\
+> Get to know markdown syntax
 - [Instructions](https://github.com/ucb-stat133/stat133-spring-2019/blob/master/labs/lab01-R-basics.md)
 - [Finished Work](https://github.com/stat133-sp19/hw-stat133-HonglingLei/tree/master/lab01-R-basics)
 
@@ -51,14 +51,14 @@ I created an R package called "binomial" that provides functions to check whethe
 > Understand the concept of atomic structures\
 > Learn how to subset and slice R vectors\
 > Understand the concept of vectorization\
-> Understand recycling rules in R\
+> Understand recycling rules in R
 - [Instructions](https://github.com/ucb-stat133/stat133-spring-2019/blob/master/labs/lab01-R-basics.md)
 - [Finished Work](https://github.com/stat133-sp19/hw-stat133-HonglingLei/tree/master/lab02-vector-basics)
 
 ### Lab 3: Data Frame Basics
 > Importing Data Tables in R\
 > Default reading-table functions\
-> Basic manipulation of data frames\
+> Basic manipulation of data frames
 - [Instructions](https://github.com/ucb-stat133/stat133-spring-2019/blob/master/labs/lab03-data-tables.md)
 - [Finished Work](https://github.com/stat133-sp19/hw-stat133-HonglingLei/tree/master/lab03-data-tables)
 
@@ -71,6 +71,25 @@ I created an R package called "binomial" that provides functions to check whethe
 > `summarise()`\
 > `group_by()`\
 > Get started with `"ggplot2"`\
-> Produce basic plots with `ggplot()`\
+> Produce basic plots with `ggplot()`
 - [Instructions](https://github.com/ucb-stat133/stat133-spring-2019/blob/master/labs/lab04-dplyr-ggplot-basics.md)
 - [Finished Work](https://github.com/stat133-sp19/hw-stat133-HonglingLei/tree/master/lab04-dplyr-ggplot-basics)
+
+### Lab 5: Command Line Basics
+> Practicing with the command line\
+> Navigating the filesystem and managing files\
+> Practice basic manipulation of data files\
+> Practice exporting tables from R\
+> Practice exporting displayed output (as is) from R\
+> Practice exporting plot images from R
+- [Instructions](https://github.com/ucb-stat133/stat133-spring-2019/blob/master/labs/lab05-command-line-basics.md)
+- [Finished Work](https://github.com/stat133-sp19/hw-stat133-HonglingLei/tree/master/lab05-command-line-basics)
+
+### Lab 6: Git and GitHub Basics
+> Create a GitHub repository\
+> Create a local Git repository\
+> Practice adding, and committing changes to your (local) Git repo\
+> Practice pushing committed changes to a remote repo
+- [Instructions](https://github.com/ucb-stat133/stat133-spring-2019/blob/master/labs/lab06-git-basics.md)
+- [Finished Work](https://github.com/stat133-sp19/hw-stat133-HonglingLei/tree/master/lab06-git-basics)
+
