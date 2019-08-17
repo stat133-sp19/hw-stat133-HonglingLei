@@ -93,3 +93,52 @@ I created an R package called "binomial" that provides functions to check whethe
 - [Instructions](https://github.com/ucb-stat133/stat133-spring-2019/blob/master/labs/lab06-git-basics.md)
 - [Finished Work](https://github.com/stat133-sp19/hw-stat133-HonglingLei/tree/master/lab06-git-basics)
 
+### Lab 7: Simple Functions and Conditionals
+> Learn how to write simple functions\
+> Get into the habit of writing simple functions\
+> Get into the habit of documenting functions\
+> Make sure your functions work\
+> Use conditionals if-then-else
+- [Instructions](https://github.com/ucb-stat133/stat133-spring-2019/blob/master/labs/lab07-simple-functions.md)
+- [Finished Work](https://github.com/stat133-sp19/hw-stat133-HonglingLei/tree/master/lab07-simple-functions)
+
+### Lab 8: Simple Loops
+> Forget about vectorized code (pretend it doesn’t exist)\
+> Practice writing simple loops\
+> Get familiar with the syntax of a for loop\
+> Get familiar with the syntax of a while loop\
+> Get familiar with the syntax of a repeat loop\
+> Encapsulate loops inside a function call
+- [Instructions](https://github.com/ucb-stat133/stat133-spring-2019/blob/master/labs/lab08-simple-loops.md)
+- [Finished Work](https://github.com/stat133-sp19/hw-stat133-HonglingLei/tree/master/lab08-simple-loops)
+
+### Lab 9: Testing Functions and String Basics
+> Introduction to the R package “testthat”\
+> Write simple functions and their unit tests\
+> Test your code\
+> String manipulation\
+> Base R functions for strings
+- [Instructions](https://github.com/ucb-stat133/stat133-spring-2019/blob/master/labs/lab09-tests-strings-basics.md)
+- [Finished Work](https://github.com/stat133-sp19/hw-stat133-HonglingLei/tree/master/lab09-tests-strings-basics)
+
+### Lab 10: Random Numbers and Simulations
+> getting started with simulations in R\
+> learn how to create a basic shiny app\
+> put in practice concepts from your introductory statistics course(s)
+- [Instructions](https://github.com/ucb-stat133/stat133-spring-2019/blob/master/labs/lab11-regex-basics.md)
+- [Finished Work](https://github.com/stat133-sp19/hw-stat133-HonglingLei/tree/master/lab10-random-simulations)
+
+### Lab 11: Regular Expressions
+> Work with the package "stringr"\
+> String manipulation\
+> More regular expressions\
+> A bit of data cleaning
+- [Instructions](https://github.com/ucb-stat133/stat133-spring-2019/blob/master/labs/lab11-regex-basics.md)
+- [Finished Work](https://github.com/stat133-sp19/hw-stat133-HonglingLei/tree/master/lab11-regex-basics)
+
+### Lab 12: Web Scrapping
+> Work with the package "rvest"\
+> Learn to extract html elements and attributes\
+> Create a simple crawler
+- [Instructions](https://github.com/ucb-stat133/stat133-spring-2019/blob/master/labs/lab12-web-scraping.md)
+- [Finished Work](https://github.com/stat133-sp19/hw-stat133-HonglingLei/tree/master/lab12-web-scrapping)
