@@ -37,12 +37,12 @@ I created an R package called "binomial" that provides functions to check whethe
 ## Labs
 
 ### Lab 1: R and RStudio
-1. Get started with R as a scientific calculator
-2. Understand pane layout of RStudio
-3. Understand the help documentation in R
-4. How to install packages
-5. Difference between .R and .Rmd files
-6. Get to know markdown syntax
+> 1. Get started with R as a scientific calculator
+> 2. Understand pane layout of RStudio
+> 3. Understand the help documentation in R
+> 4. How to install packages
+> 5. Difference between .R and .Rmd files
+> 6. Get to know markdown syntax
 - [Instructions](https://github.com/ucb-stat133/stat133-spring-2019/blob/master/labs/lab01-R-basics.md)
 - [Finished Work](https://github.com/stat133-sp19/hw-stat133-HonglingLei/tree/master/lab01-R-basics)
 
@@ -54,3 +54,8 @@ I created an R package called "binomial" that provides functions to check whethe
 5. Understand recycling rules in R
 - [Instructions](https://github.com/ucb-stat133/stat133-spring-2019/blob/master/labs/lab01-R-basics.md)
 - [Finished Work](https://github.com/stat133-sp19/hw-stat133-HonglingLei/tree/master/lab02-vector-basics)
+
+### Lab 3: Data Frame Basics
+1. Importing Data Tables in R
+Default reading-table functions
+Basic manipulation of data frames
