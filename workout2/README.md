@@ -8,4 +8,4 @@ In this project, I created a Shiny App that allows users to visualize - in an in
 
 Shiny App Link
 --------
-Click [here] to try this Shiny App.(https://honglinglei.shinyapps.io/workout02/)
+Click [here](https://honglinglei.shinyapps.io/workout02/) to try this Shiny App.
