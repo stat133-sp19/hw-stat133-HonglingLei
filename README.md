@@ -6,6 +6,7 @@ Private Repository for HW assignments of Stat 133 (Spring 2019)
 - Github username: HonglingLei
 - Email: honglinglei@berkeley.edu / leihongling1998@163.com
 - Lab section: 111
+- Professor: Gaston Sanchez
 - GSI: Yulun Wu
 
 -----
