@@ -63,7 +63,7 @@ I created an R package called "binomial" that provides functions to check whethe
 - [Instructions](https://github.com/ucb-stat133/stat133-spring-2019/blob/master/labs/lab03-data-tables.md)
 - [Finished Work](https://github.com/stat133-sp19/hw-stat133-HonglingLei/tree/master/lab03-data-tables)
 
-### Lab 4: Data Frame Basics
+### Lab 4: dplyr and ggplot2
 > Get started with `"dplyr"`\
 > Get to know the basic dplyr verbs:\
 > `slice()`, `filter()`, `select()`\
