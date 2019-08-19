@@ -1,8 +1,8 @@
 README
 ================
 
-## Workout Description
-This workout is mainly about the data analysis cycle of nba GSW data. 
+## Project Description
+This project is mainly about the data analysis cycle of nba GSW data. 
 In the data preparation stage, I downloaded data, cleaned data by manipulating them, merged files for further analysis.
 
 In the core analysis stage, I wrote codes to make statistical summaries of different players' performances, plotted graphs to display their shots and changed the formats of the graphs to enable them to be shown in the final report.
